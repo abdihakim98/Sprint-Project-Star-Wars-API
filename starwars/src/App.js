@@ -1,5 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
+import PeopleList from './components/PeopleList';
+
+// Step3 import { Switch } from 'react-router-dom';
+
+import { Switch, Route, Link} from 'react-router-dom';
+import FilmsList from './components/FilmsList';
+import Home from './components/Home';
+//Step6 import axios 
+
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -11,9 +20,39 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1 className="Header">React Wars</h1>
+  {/* Step5 create links */}
+      <nav>
+         <div className="nav-links">
+
+        <Link to="/">PeopleList</Link>
+
+
+        <Link to="/FilmsList">FilmsList</Link>
+
+          </div>
+      
+    </nav> 
+
+    {/* Step4 create route */}
+
+    <Switch>
+    <Route path="/" component={Home} />
+
+    <Route path="/Films">
+      <FilmsList /> 
+    </Route>
+
+    <Route path="/People">
+      <PeopleList /> 
+    </Route>
+
+    </Switch>
+
+  
     </div>
   );
 }
+
+
 
 export default App;
